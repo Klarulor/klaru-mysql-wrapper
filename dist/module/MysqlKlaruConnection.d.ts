@@ -5,6 +5,6 @@ export declare class MysqlKlaruConnection {
     constructor();
     connect(ip: string, port: number, user: string, password: string, database: string, callback: () => any): void;
     private anyReq;
-    requestRaw(query: string): Promise<any[]>;
+    reqRaw(query: string): Promise<any[]>;
     reqQuery(query: string, ...opts: any[]): Promise<any>;
 }

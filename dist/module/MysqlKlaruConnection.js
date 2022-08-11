@@ -36,7 +36,7 @@ class MysqlKlaruConnection {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
                 this.connection.ping((x) => __awaiter(this, void 0, void 0, function* () {
-                    if (x.fatal == true) {
+                    if (x) {
                         this.connection.destroy();
                         this.connection.connect(z => {
                             if (z)
@@ -50,7 +50,7 @@ class MysqlKlaruConnection {
             }));
         });
     }
-    requestRaw(query) {
+    reqRaw(query) {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             yield this.anyReq();
             try {
@@ -71,7 +71,7 @@ class MysqlKlaruConnection {
                 yield this.anyReq();
                 this.connection.query(query, opts, (err, rows) => {
                     if (err)
-                        return resolve(null);
+                        throw err;
                     return resolve(rows);
                 });
             }
