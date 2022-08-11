@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MysqlKlaruConnection = void 0;
 const mysql2_1 = require("mysql2");
 class MysqlKlaruConnection {
     constructor() {
@@ -78,5 +79,5 @@ class MysqlKlaruConnection {
         }));
     }
 }
-exports.default = MysqlKlaruConnection;
+exports.MysqlKlaruConnection = MysqlKlaruConnection;
 //# sourceMappingURL=MysqlKlaruConnection.js.map

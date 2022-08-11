@@ -1,6 +1,6 @@
 import {Connection, createConnection} from "mysql2";
 
-export default class MysqlKlaruConnection{
+export class MysqlKlaruConnection{
     private _connection: Connection;
     get connection(){
         return this._connection;

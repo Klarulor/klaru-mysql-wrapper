@@ -1,5 +1,5 @@
 import { Connection } from "mysql2";
-export default class MysqlKlaruConnection {
+export declare class MysqlKlaruConnection {
     private _connection;
     get connection(): Connection;
     constructor();
