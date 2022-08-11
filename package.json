@@ -1,14 +1,41 @@
 {
-  "name": "klarumysqlwrapper",
+  "name": "klaru-mysql-wrapper",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Wrapper for mysql from klarulor",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@types/node": "^18.7.1",
+    "denque": "^2.1.0",
+    "generate-function": "^2.3.1",
+    "iconv-lite": "^0.6.3",
+    "is-property": "^1.0.2",
+    "long": "^4.0.0",
+    "lru-cache": "^6.0.0",
+    "mysql2": "^2.3.3",
+    "named-placeholders": "^1.1.2",
+    "pseudomap": "^1.0.2",
+    "safer-buffer": "^2.1.2",
+    "seq-queue": "^0.0.5",
+    "sqlstring": "^2.3.3",
+    "yallist": "^4.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mysql2": "^2.3.3"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Klarulor/klaru-mysql-wrapper.git"
+  },
+  "keywords": [
+    "mysql",
+    "wrapper",
+    "klarulor",
+    "klar"
+  ],
+  "author": "klarulor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Klarulor/klaru-mysql-wrapper/issues"
+  },
+  "homepage": "https://github.com/Klarulor/klaru-mysql-wrapper#readme"
 }
