@@ -18,10 +18,11 @@ class MysqlKlaruConnection {
     }
     connect(ip, port, user, password, database, callback) {
         this._connection = (0, mysql2_1.createConnection)({
-            host: `${ip}:${port}`,
+            host: ip,
             user,
             password,
             database,
+            port
         });
         this._connection.connect((err) => __awaiter(this, void 0, void 0, function* () {
             if (err)

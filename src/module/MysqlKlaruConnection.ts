@@ -10,10 +10,11 @@ export default class MysqlKlaruConnection{
     }
     public connect(ip: string, port: number, user: string, password: string, database: string, callback: () => any): void{
         this._connection = createConnection({
-            host: `${ip}:${port}`,
+            host: ip,
             user,
             password,
             database,
+            port
         });
         this._connection.connect(async (err: any) => {
             if (err) throw err;
