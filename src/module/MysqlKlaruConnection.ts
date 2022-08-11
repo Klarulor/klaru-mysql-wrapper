@@ -24,7 +24,7 @@ export class MysqlKlaruConnection{
     private async anyReq(): Promise<void> {
         return new Promise(async resolve => {
             this.connection.ping(async x => {
-                if (x.fatal == true) {
+                if (x) {
                     this.connection.destroy();
                     this.connection.connect(z => {
                         if (z) throw z;
@@ -34,7 +34,7 @@ export class MysqlKlaruConnection{
             })
         })
     }
-    public requestRaw(query: string): Promise<any[]> {
+    public reqRaw(query: string): Promise<any[]> {
         return new Promise(async resolve => {
             await this.anyReq();
             try {
@@ -51,7 +51,7 @@ export class MysqlKlaruConnection{
             try {
                 await this.anyReq();
                 this.connection.query(query, opts, (err, rows) => {
-                    if (err) return resolve(null);
+                    if (err) throw err;
                     return resolve(rows);
                 })
             } catch { }
