@@ -72,7 +72,7 @@ class MysqlKlaruConnection {
                 this.connection.query(query, opts, (err, rows) => {
                     if (err)
                         throw err;
-                    return resolve(rows);
+                    resolve(rows.length == 0 ? null : rows);
                 });
             }
             catch (_a) { }

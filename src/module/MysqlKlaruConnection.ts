@@ -52,7 +52,7 @@ export class MysqlKlaruConnection{
                 await this.anyReq();
                 this.connection.query(query, opts, (err, rows) => {
                     if (err) throw err;
-                    return resolve(rows);
+                    resolve((rows as any[]).length == 0 ? null : rows);
                 })
             } catch { }
         })
