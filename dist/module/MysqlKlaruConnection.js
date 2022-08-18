@@ -35,18 +35,19 @@ class MysqlKlaruConnection {
     anyReq() {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
-                this.connection.ping((x) => __awaiter(this, void 0, void 0, function* () {
-                    if (x) {
-                        this.connection.destroy();
-                        this.connection.connect(z => {
-                            if (z)
-                                throw z;
-                            resolve();
-                        });
-                    }
-                    else
-                        resolve();
-                }));
+                try {
+                    this.connection.ping((x) => __awaiter(this, void 0, void 0, function* () {
+                        if (x) {
+                            this.connection.destroy();
+                            this.connection.connect(z => {
+                                if (z)
+                                    throw z;
+                            });
+                        }
+                    }));
+                }
+                catch (_a) { }
+                resolve();
             }));
         });
     }
@@ -63,6 +64,7 @@ class MysqlKlaruConnection {
                 });
             }
             catch (_a) { }
+            resolve(null);
         }));
     }
     reqQuery(query, ...opts) {
@@ -76,6 +78,7 @@ class MysqlKlaruConnection {
                 });
             }
             catch (_a) { }
+            resolve(null);
         }));
     }
 }

@@ -23,15 +23,17 @@ export class MysqlKlaruConnection{
     }
     private async anyReq(): Promise<void> {
         return new Promise(async resolve => {
-            this.connection.ping(async x => {
-                if (x) {
-                    this.connection.destroy();
-                    this.connection.connect(z => {
-                        if (z) throw z;
-                        resolve();
-                    })
-                } else resolve();
-            })
+            try{
+                this.connection.ping(async x => {
+                    if (x) {
+                        this.connection.destroy();
+                        this.connection.connect(z => {
+                            if (z) throw z;
+                        })
+                    }
+                })
+            }catch{}
+            resolve();
         })
     }
     public reqRaw(query: string): Promise<any[]> {
@@ -44,6 +46,7 @@ export class MysqlKlaruConnection{
                     return resolve(rows);
                 })
             } catch { }
+            resolve(null);
         })
     }
     public reqQuery(query: string, ...opts: any[]): Promise<any> {
@@ -55,6 +58,8 @@ export class MysqlKlaruConnection{
                     resolve((rows as any[]).length == 0 ? null : rows);
                 })
             } catch { }
+            resolve(null);
         })
+    
     }
 }
