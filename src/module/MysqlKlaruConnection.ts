@@ -32,8 +32,8 @@ export class MysqlKlaruConnection{
                         })
                     }
                 })
-            }catch{}
-            resolve();
+            }catch{ resolve(); }
+            
         })
     }
     public reqRaw(query: string): Promise<any[]> {
@@ -45,8 +45,8 @@ export class MysqlKlaruConnection{
                     if ((!rows) || !Array.isArray(rows)) return resolve(null);
                     return resolve(rows);
                 })
-            } catch { }
-            resolve(null);
+            } catch { resolve(null); }
+            
         })
     }
     public reqQuery(query: string, ...opts: any[]): Promise<any> {
@@ -57,8 +57,8 @@ export class MysqlKlaruConnection{
                     if (err) throw err;
                     resolve((rows as any[]).length == 0 ? null : rows);
                 })
-            } catch { }
-            resolve(null);
+            } catch { resolve(null); }
+            
         })
     
     }
