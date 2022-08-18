@@ -32,7 +32,7 @@ export class MysqlKlaruConnection{
                         })
                     }
                 })
-            }catch{ resolve(); }
+            } catch(error) {console.error(error); resolve(null); }
             
         })
     }
@@ -45,7 +45,7 @@ export class MysqlKlaruConnection{
                     if ((!rows) || !Array.isArray(rows)) return resolve(null);
                     return resolve(rows);
                 })
-            } catch { resolve(null); }
+            } catch(error) {console.error(error); resolve(null); }
             
         })
     }
@@ -57,7 +57,7 @@ export class MysqlKlaruConnection{
                     if (err) throw err;
                     resolve((rows as any[]).length == 0 ? null : rows);
                 })
-            } catch { resolve(null); }
+            } catch(error) {console.error(error); resolve(null); }
             
         })
     
