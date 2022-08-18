@@ -31,6 +31,7 @@ export class MysqlKlaruConnection{
                             if (z) throw z;
                         })
                     }
+                    resolve(null);
                 })
             } catch(error) {console.error(error); resolve(null); }
             

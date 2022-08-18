@@ -44,6 +44,7 @@ class MysqlKlaruConnection {
                                     throw z;
                             });
                         }
+                        resolve(null);
                     }));
                 }
                 catch (error) {
