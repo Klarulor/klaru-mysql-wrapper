@@ -46,8 +46,9 @@ class MysqlKlaruConnection {
                         }
                     }));
                 }
-                catch (_a) { }
-                resolve();
+                catch (_a) {
+                    resolve();
+                }
             }));
         });
     }
@@ -63,8 +64,9 @@ class MysqlKlaruConnection {
                     return resolve(rows);
                 });
             }
-            catch (_a) { }
-            resolve(null);
+            catch (_a) {
+                resolve(null);
+            }
         }));
     }
     reqQuery(query, ...opts) {
@@ -77,8 +79,9 @@ class MysqlKlaruConnection {
                     resolve(rows.length == 0 ? null : rows);
                 });
             }
-            catch (_a) { }
-            resolve(null);
+            catch (_a) {
+                resolve(null);
+            }
         }));
     }
 }
