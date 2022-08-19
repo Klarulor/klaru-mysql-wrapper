@@ -18,7 +18,7 @@ class MysqlKlaruConnection {
         return this._connection;
     }
     connect(ip, port, user, password, database, callback) {
-        this._connection = (0, mysql2_1.createConnection)({
+        const pool = (0, mysql2_1.createPool)({
             host: ip,
             user,
             password,
@@ -34,24 +34,21 @@ class MysqlKlaruConnection {
     }
     anyReq() {
         return __awaiter(this, void 0, void 0, function* () {
-            return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
-                try {
-                    this.connection.ping((x) => __awaiter(this, void 0, void 0, function* () {
-                        if (x) {
-                            this.connection.destroy();
-                            this.connection.connect(z => {
-                                if (z)
-                                    throw z;
-                            });
-                        }
-                        resolve(null);
-                    }));
-                }
-                catch (error) {
-                    console.error(error);
-                    resolve(null);
-                }
-            }));
+            /* return new Promise(async resolve => {
+                 try{
+                     this.connection.(async x => {
+                         if (x) {
+                             this.connection.destroy();
+                             this.connection.connect(z => {
+                                 if (z) throw z;
+                             })
+                         }
+                         resolve(null);
+                     })
+                 } catch(error) {console.error(error); resolve(null); }
+                 
+             })*/
+            return null;
         });
     }
     reqRaw(query) {
