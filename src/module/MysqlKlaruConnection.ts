@@ -9,7 +9,7 @@ export class MysqlKlaruConnection{
 
     }
     public connect(ip: string, port: number, user: string, password: string, database: string, callback: () => any): void{
-        const pool = createPool({
+        this._connection = createPool({
             host: ip,
             user,
             password,

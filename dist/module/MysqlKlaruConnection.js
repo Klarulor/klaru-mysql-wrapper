@@ -18,7 +18,7 @@ class MysqlKlaruConnection {
         return this._connection;
     }
     connect(ip, port, user, password, database, callback) {
-        const pool = (0, mysql2_1.createPool)({
+        this._connection = (0, mysql2_1.createPool)({
             host: ip,
             user,
             password,
