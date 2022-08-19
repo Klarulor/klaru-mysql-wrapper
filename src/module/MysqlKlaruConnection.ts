@@ -1,7 +1,7 @@
-import {Connection, createConnection, createPool, Pool} from "mysql2";
+import {Connection, createConnection} from "mysql2";
 
 export class MysqlKlaruConnection{
-    private _connection: Pool;
+    private _connection: Connection;
     get connection(){
         return this._connection;
     }
@@ -9,7 +9,7 @@ export class MysqlKlaruConnection{
 
     }
     public connect(ip: string, port: number, user: string, password: string, database: string, callback: () => any): void{
-        this._connection = createPool({
+        this._connection = createConnection({
             host: ip,
             user,
             password,
@@ -22,12 +22,15 @@ export class MysqlKlaruConnection{
         });
     }
     private async anyReq(): Promise<void> {
-       /* return new Promise(async resolve => {
+        return new Promise(async resolve => {
             try{
-                this.connection.(async x => {
+                console.log("Trying to ping")
+                this.connection.ping(async x => {
+                    console.log(`x: ${x}`)
                     if (x) {
                         this.connection.destroy();
                         this.connection.connect(z => {
+                            console.log(`z: ${z}`);
                             if (z) throw z;
                         })
                     }
@@ -35,8 +38,7 @@ export class MysqlKlaruConnection{
                 })
             } catch(error) {console.error(error); resolve(null); }
             
-        })*/
-        return null;
+        })
     }
     public reqRaw(query: string): Promise<any[]> {
         return new Promise(async resolve => {

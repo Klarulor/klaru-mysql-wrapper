@@ -1,6 +1,6 @@
 {
   "name": "klaru-mysql-wrapper",
-  "version": "1.0.11",
+  "version": "1.0.14",
   "description": "Wrapper for mysql from klarulor",
   "main": "src/index.ts",
   "dependencies": {

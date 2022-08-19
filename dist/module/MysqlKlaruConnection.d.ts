@@ -1,7 +1,7 @@
-import { Pool } from "mysql2";
+import { Connection } from "mysql2";
 export declare class MysqlKlaruConnection {
     private _connection;
-    get connection(): Pool;
+    get connection(): Connection;
     constructor();
     connect(ip: string, port: number, user: string, password: string, database: string, callback: () => any): void;
     private anyReq;
