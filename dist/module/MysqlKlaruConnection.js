@@ -18,6 +18,13 @@ class MysqlKlaruConnection {
         return this._connection;
     }
     connect(ip, port, user, password, database, callback) {
+        this._config = {
+            ip,
+            user,
+            password,
+            database,
+            port
+        };
         this._connection = (0, mysql2_1.createConnection)({
             host: ip,
             user,
@@ -40,11 +47,13 @@ class MysqlKlaruConnection {
                     this.connection.ping((x) => __awaiter(this, void 0, void 0, function* () {
                         console.log(`x: ${x}`);
                         if (x) {
-                            this.connection.destroy();
-                            this.connection.connect(z => {
-                                console.log(`z: ${z}`);
-                                if (z)
-                                    throw z;
+                            this._connection.destroy();
+                            this._connection = (0, mysql2_1.createConnection)({
+                                host: this._config.ip,
+                                user: this._config.user,
+                                password: this._config.password,
+                                database: this._config.database,
+                                port: this._config.port
                             });
                         }
                         resolve(null);

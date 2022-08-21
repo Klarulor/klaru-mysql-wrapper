@@ -2,6 +2,7 @@ import {Connection, createConnection} from "mysql2";
 
 export class MysqlKlaruConnection{
     private _connection: Connection;
+    private _config: IMySqlKlaruConnectionOptions;
     get connection(){
         return this._connection;
     }
@@ -9,6 +10,13 @@ export class MysqlKlaruConnection{
 
     }
     public connect(ip: string, port: number, user: string, password: string, database: string, callback: () => any): void{
+        this._config = {
+            ip,
+            user,
+            password,
+            database,
+            port
+        };
         this._connection = createConnection({
             host: ip,
             user,
@@ -28,10 +36,13 @@ export class MysqlKlaruConnection{
                 this.connection.ping(async x => {
                     console.log(`x: ${x}`)
                     if (x) {
-                        this.connection.destroy();
-                        this.connection.connect(z => {
-                            console.log(`z: ${z}`);
-                            if (z) throw z;
+                        this._connection.destroy();
+                        this._connection = createConnection({
+                            host: this._config.ip,
+                            user: this._config.user,
+                            password: this._config.password,
+                            database: this._config.database,
+                            port: this._config.port
                         })
                     }
                     resolve(null);
@@ -66,4 +77,13 @@ export class MysqlKlaruConnection{
         })
     
     }
+}
+
+
+interface IMySqlKlaruConnectionOptions{
+    ip: string;
+    user: string;
+    password: string;
+    database: string;
+    port: number;
 }
