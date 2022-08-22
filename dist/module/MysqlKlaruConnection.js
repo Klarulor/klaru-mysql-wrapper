@@ -43,9 +43,9 @@ class MysqlKlaruConnection {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
                 try {
-                    console.log("Trying to ping");
+                    //console.log("Trying to ping")
                     this.connection.ping((x) => __awaiter(this, void 0, void 0, function* () {
-                        console.log(`x: ${x}`);
+                        //console.log(`x: ${x}`)
                         if (x) {
                             this._connection.destroy();
                             this._connection = (0, mysql2_1.createConnection)({
