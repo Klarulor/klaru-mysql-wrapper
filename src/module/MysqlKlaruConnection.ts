@@ -32,9 +32,9 @@ export class MysqlKlaruConnection{
     private async anyReq(): Promise<void> {
         return new Promise(async resolve => {
             try{
-                console.log("Trying to ping")
+                //console.log("Trying to ping")
                 this.connection.ping(async x => {
-                    console.log(`x: ${x}`)
+                    //console.log(`x: ${x}`)
                     if (x) {
                         this._connection.destroy();
                         this._connection = createConnection({
