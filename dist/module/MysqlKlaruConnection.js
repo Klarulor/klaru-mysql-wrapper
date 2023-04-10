@@ -12,10 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MysqlKlaruConnection = void 0;
 const mysql2_1 = require("mysql2");
 class MysqlKlaruConnection {
-    constructor() {
-    }
     get connection() {
         return this._connection;
+    }
+    constructor() {
     }
     connect(ip, port, user, password, database, callback) {
         this._config = {

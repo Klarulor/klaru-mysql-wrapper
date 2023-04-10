@@ -1,1 +1,1 @@
-export * from "./module/MysqlKlaruConnection";
+export { MysqlKlaruConnection } from "./module/MysqlKlaruConnection";
